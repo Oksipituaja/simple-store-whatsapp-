@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="main.js"></script> -->
+    <link href="./output.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./Assets/Icon/Logo Design _af_ Logotype(wordmark).svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Akmal Furniture</title>
+</head>
+
+<body class="">
+    <!-- PROMO BAR -->
+    <div class="bg-sky-500 px-4 py-3 text-white">
+        <p class="text-center text-sm font-medium">
+            PROMO HINGGA 30%
+            <a href="#" class="inline-block underline">Berlaku untuk hari ini saja!</a>
+        </p>
+    </div>
+
+    <!-- Start Navbar -->
+    <header class="bg-black shadow-md relative z-10">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+
+            <!-- Logo -->
+            <a href="https://wa.me/6212345678?text=Hallo, Akmal Furniture"
+                class="space-x-3 text-white font-bold flex items-center text-xl transition-all duration-300 hover:text-sky-400">
+                <img src="./Assets/Icon/Logo Design _af_ Logotype(wordmark).svg" class="rounded-xl h-8 w-8 hover:scale-110"
+                    alt="">
+                <h2>Akmal Furniture</h2>
+            </a>
+
+            <!-- Kontainer untuk Chat dan Hamburger -->
+            <div class="flex items-center space-x-3 md:order-2">
+
+                <!-- Tombol Hamburger -->
+                <button id="menu-toggle"
+                    class="md:hidden z-20 text-white focus:outline-none transition-all duration-300 hover:bg-blue-400 p-2 rounded-md">
+                    <svg id="menu-icon" class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+
+                <!-- Tombol Chat Admin -->
+                <a href="">
+                    <button
+                        class="flex border items-center space-x-2 px-4 py-2 bg-white text-black text-sm font-medium rounded-lg shadow-md transition-all duration-300 hover:border-white md:hover:border hover:text-white hover:bg-black">
+                        Chat Admin
+                    </button>
+                </a>
+
+            </div>
+
+            <!-- Menu Navigasi -->
+            <div id="menu"
+                class="hidden md:flex flex-col md:flex-row md:space-x-6 absolute md:static top-16 left-0 w-full md:w-auto bg-gray-900 md:bg-transparent py-5 md:py-0 shadow-md md:shadow-none transition-all duration-300 opacity-0 md:opacity-100 scale-y-0 md:scale-y-100 origin-top">
+                <a href="#home"
+                    class="menu-item block hover:scale-105 text-white px-8 py-2 md:p-0 relative transition-all duration-300 hover:bg-sky-400 md:hover:bg-transparent md:hover:text-sky-300">
+                    Home
+                </a>
+                <a href="#product"
+                    class="menu-item block hover:scale-105 text-white px-8 py-2 md:p-0 relative transition-all duration-300 hover:bg-sky-400 md:hover:bg-transparent md:hover:text-sky-300">
+                    Product
+                </a>
+                <a href="#feedback"
+                    class="menu-item block hover:scale-105 text-white px-8 py-2 md:p-0 relative transition-all duration-300 hover:bg-sky-400 md:hover:bg-transparent md:hover:text-sky-300">
+                    Feedback
+                </a>
+                <a href="#aboutUs"
+                    class="menu-item block hover:scale-105 text-white px-8 py-2 md:p-0 relative transition-all duration-300 hover:bg-sky-400 md:hover:bg-transparent md:hover:text-sky-300">
+                    About Us
+                </a>
+            </div>
+
+        </nav>
+    </header>
+
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+
+        // Toggle menu open/close
+        menuToggle.addEventListener("click", () => {
+            const isOpen = !menu.classList.contains("hidden");
+
+            if (isOpen) {
+                menu.classList.add("opacity-0", "scale-y-0");
+                setTimeout(() => menu.classList.add("hidden"), 300);
+            } else {
+                menu.classList.remove("hidden");
+                setTimeout(() => menu.classList.remove("opacity-0", "scale-y-0"), 10);
+            }
+        });
+
+        // Auto-close the menu when a menu item is clicked
+        const menuItems = document.querySelectorAll(".menu-item");
+        menuItems.forEach(item => {
+            item.addEventListener("click", () => {
+                if (!menu.classList.contains("hidden")) {
+                    menu.classList.add("opacity-0", "scale-y-0");
+                    setTimeout(() => menu.classList.add("hidden"), 300);
+                }
+            });
+        });
+
+        //Navbar OnScroll
+        let lastScrollTop = 0;
+        const navbar = document.getElementById("navbar");
+
+        window.addEventListener("scroll", function () {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                // Scroll Down
+                navbar.style.transform = "translateY(-100%)";
+            } else {
+                // Scroll Up
+                navbar.style.transform = "translateY(0)";
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+        });
+    </script>
+
+    <!-- End Navbar -->
+
+    <!--CALL TO ACTION -->
+    <section id="home" class="bg-white border">
+        <div class="p-10 md:p-12">
+            <div class="mx-auto md:max-w-screen-md text-center">
+                <!-- Gambar Slide -->
+                <div class="slideshow-container">
+                    <!-- Slides -->
+                    <div class="mySlides fade">
+                        <img class="w-full slide-image"
+                            src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2Vic2l0ZSUyMGxpdmluZyUyMHJvb20lMjBmdXJuaXR1cmV8ZW58MHwwfDB8fHwy"
+                            alt="">
+                    </div>
+                    <div class="mySlides fade">
+                        <img class="w-full slide-image"
+                            src="https://images.unsplash.com/photo-1489171078254-c3365d6e359f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2Vic2l0ZSUyMGxpdmluZyUyMHJvb20lMjBmdXJuaXR1cmV8ZW58MHwwfDB8fHwy"
+                            alt="">
+                    </div>
+                    <div class="mySlides fade">
+                        <img class="w-full slide-image"
+                            src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2Vic2l0ZSUyMGxpdmluZyUyMHJvb20lMjBmdXJuaXR1cmV8ZW58MHwwfDB8fHwy"
+                            alt="">
+                    </div>
+
+                    <!-- Navigasi Kiri dan Kanan -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                    <!-- Indikator slide (dot) di dalam slide -->
+                    <div class="dot-container">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+
+                <!-- Title and description -->
+                <h2 class="text-2xl font-bold text-gray-900 md:text-3xl mt-6">
+                    Mebel Berkualitas untuk Interior Nyaman & Elegan!
+                </h2>
+
+                <p class="text-gray-500 sm:mt-4">
+                    Kami menyediakan mebel berkualitas tinggi dengan desain klasik dan elegan. Setiap produk dibuat
+                    dengan material terbaik dan pengerjaan detail untuk memberikan kenyamanan serta keindahan di setiap
+                    sudut ruangan Anda.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CSS untuk animasi slideshow dan navigasi -->
+    <style>
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            
+        }
+
+        .fade {
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0.7;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+        .prev {
+            left: 0;
+            position: absolute;
+            align-items: center;
+            top: 50%;
+            margin-left: 20px;
+            padding: 10px 20px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            user-select: none;
+            transform: translateY(-50%);
+        }
+
+        .next {
+            right: 0;
+            position: absolute;
+            top: 50%;
+            margin-right: 20px;
+            padding: 10px 20px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            user-select: none;
+            transform: translateY(-50%);
+        }
+
+        .dot-container {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .dot {
+            height: 5px;
+            width: 100px;
+            margin: 0 5px;
+            background-color: #ffffff;
+            border-radius: 5% 5%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active {
+            background-color: #2a2a2a;
+        }
+
+        @media only screen and (max-width: 600px) {
+
+            .prev,
+            .next {
+                font-size: 24px;
+                padding: 10px;
+            }
+
+            .dot {
+                height: 10px;
+                width: 10px;
+            }
+        }
+    </style>
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+
+            slides[slideIndex - 1].style.display = "block";
+
+            dots[slideIndex - 1].className += " active";
+
+            setTimeout(showSlides, 3000);
+        }
+
+        function plusSlides(n) {
+            slideIndex += n;
+            if (slideIndex > document.getElementsByClassName("mySlides").length) {
+                slideIndex = 1;
+            } else if (slideIndex < 1) {
+                slideIndex = document.getElementsByClassName("mySlides").length;
+            }
+            showSlides();
+        }
+        
+        showSlides();  
+    </script>
+    <!--END CALL TO ACTION -->
+
+    <!--PRODUCT LIST -->
+    <section id="product">
+        <div class="container mx-auto">
+            <div class="text-center py-10 text-3xl font-bold">
+                <h2 class="border-l">Produk Kami</h2>
+            </div>
+            <div id="product-list" class="container px-4 grid grid-cols-4 gap-4 max-w-3xl mx-auto py-10">
+
+            </div>
+
+
+            <div id="pagination" class="flex justify-center space-x-2 py-4">
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Daftar produk
+        const products = [
+            { name: "Kursi Santai Estetik", price: "Rp 1.500.000", img: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+            { name: "Kursi Tradisional Kayu", price: "Rp 870.000", img: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+            { name: "Meja Minimalis Putih", price: "Rp 1.200.000", img: "https://img.freepik.com/free-vector/empty-white-plastic-table-isolated-white-background-product-display-template-vector-3d-table_90220-2601.jpg" },
+            { name: "Meja TV Minimalis", price: "Rp 2.400.000", img: "https://mebel-instock.ru/files/nodus_items/5843/2921973/_cache/images/fit1000x1000/1572-13-1679067694.jpg" },
+            { name: "Kursi Sofa Single", price: "Rp 950.000", img: "https://mebel-instock.ru/files/nodus_items/5873/2936551/_cache/images/fit1000x1000/img_20241004_122426-1728046650.jpg" },
+            { name: "Lemari laci 3", price: "Rp 1.750.000", img: "https://mebel-instock.ru/files/nodus_items/5860/2930276/_cache/images/fit1000x1000/6o1rlpptlun0q7e5jl1nl1k27fan2hvk-1695738302.jpg" },
+            { name: "Lemari laci tinggi", price: "Rp 2.000.000", img: "https://mebel-instock.ru/files/nodus_items/5843/2921961/_cache/images/fit1000x1000/bezymyannyi-1678888386.jpg" },
+            { name: "Kursi Kayu Minimalis", price: "Rp 1.150.000", img: "https://mebel-instock.ru/files/nodus_items/5865/2932977/_cache/images/fit1000x1000/20240315_112446-1710600209.jpg" },
+            { name: "Lemari Laci 3 Susun (Sonoma Oak)", price: "Rp 1.660.000", img: "https://mebel-instock.ru/files/nodus_items/5845/2922899/_cache/images/fit1000x1000/mbi-sir_05_sonoma_open-1681836620.jpg" },
+            { name: "Meja Cafe B4", price: "Rp 990.000", img: "https://mebel-instock.ru/files/nodus_items/5873/2936569/_cache/images/fit1000x1000/img_20241010_111508-1728577886.jpg" },
+            { name: "Meja Cafe", price: "Rp 550.000", img: "https://mebel-instock.ru/files/nodus_items/5861/2930768/_cache/images/fit1000x1000/img_20231026_192129-1698488761.jpg" },
+            { name: "Meja Cafe Minimalis Kayu Jati", price: "Rp 1.685.000", img: "https://mebel-instock.ru/files/nodus_items/5863/2931933/_cache/images/fit1000x1000/20231123_111726-1700757948.jpg" }
+        ];
+
+
+        const itemsPerPage = 8;
+        let currentPage = 1;
+
+        // Fungsi untuk menampilkan produk
+        function displayProducts(page) {
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const productsToDisplay = products.slice(startIndex, endIndex);
+
+            const productList = document.getElementById("product-list");
+            productList.innerHTML = "";
+
+            productsToDisplay.forEach(product => {
+                const productHTML = `
+                    <a href="https://wa.me/6212345678?text=Akmal Furniture saya mau beli produk ${product.name}"
+                        class="group block">
+                        <img src="${product.img}" alt="${product.name}" class="aspect-square w-full rounded object-cover shadow-lg" />
+                        <div class="mt-3">
+                            <h3 class="font-medium text-base md:text-lg  text-gray-900 group-hover:underline group-hover:underline-offset-4">${product.name}</h3>
+                            <p class="mt-1 text-xs md:text-lg leading-tight text-gray-700">${product.price}</p>
+                        </div>
+                    </a>
+                `;
+                productList.innerHTML += productHTML;
+            });
+        }
+
+        // Fungsi untuk menampilkan tombol pagination
+        function displayPagination() {
+            const totalPages = Math.ceil(products.length / itemsPerPage);
+            const pagination = document.getElementById("pagination");
+            pagination.innerHTML = "";
+
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement("button");
+                pageButton.innerHTML = i;
+                pageButton.classList.add(
+                    "px-4",
+                    "py-2",
+                    "border",
+                    "border-gray-700",
+                    "text-gray-700",
+                    "rounded-md",
+                    "transition-all",
+                    "duration-300",
+                    "hover:bg-gray-300"
+                );
+
+
+                pageButton.addEventListener("click", () => {
+                    currentPage = i;
+                    displayProducts(currentPage);
+                    highlightActivePage(i);
+                });
+
+                pagination.appendChild(pageButton);
+            }
+        }
+
+
+        function highlightActivePage(page) {
+            const buttons = document.querySelectorAll("#pagination button");
+            buttons.forEach(button => {
+
+                if (parseInt(button.innerHTML) === page) {
+                    button.classList.add("bg-blue-500", "text-white");
+                    button.classList.remove("border-gray-700");
+                } else {
+                    button.classList.remove("bg-blue-500", "text-white");
+                    button.classList.add("border-gray-700", "text-gray-700");
+                }
+            });
+        }
+
+        // Inisialisasi
+        displayProducts(currentPage);
+        displayPagination();
+        highlightActivePage(currentPage); 
+    </script>
+
+    <!--END PRODUCT LIST -->
+
+    <!-- Feedback -->
+    <section id="feedback" class="bg-gray-50">
+
+        <link href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css" rel="stylesheet" />
+
+        <script type="module">
+            import KeenSlider from 'https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm'
+
+            const keenSliderActive = document.getElementById('keen-slider-active')
+            const keenSliderCount = document.getElementById('keen-slider-count')
+
+            const keenSlider = new KeenSlider(
+                '#keen-slider',
+                {
+                    loop: true,
+                    defaultAnimation: {
+                        duration: 750,
+                    },
+                    slides: {
+                        origin: 'center',
+                        perView: 1,
+                        spacing: 16,
+                    },
+                    breakpoints: {
+                        '(min-width: 640px)': {
+                            slides: {
+                                origin: 'center',
+                                perView: 1.5,
+                                spacing: 16,
+                            },
+                        },
+                        '(min-width: 768px)': {
+                            slides: {
+                                origin: 'center',
+                                perView: 1.75,
+                                spacing: 16,
+                            },
+                        },
+                        '(min-width: 1024px)': {
+                            slides: {
+                                origin: 'center',
+                                perView: 3,
+                                spacing: 16,
+                            },
+                        },
+                    },
+                    created(slider) {
+                        slider.slides[slider.track.details.rel].classList.remove('opacity-40')
+
+                        keenSliderActive.innerText = slider.track.details.rel + 1
+                        keenSliderCount.innerText = slider.slides.length
+                    },
+                    slideChanged(slider) {
+                        slider.slides.forEach((slide) => slide.classList.add('opacity-40'))
+
+                        slider.slides[slider.track.details.rel].classList.remove('opacity-40')
+
+                        keenSliderActive.innerText = slider.track.details.rel + 1
+                    },
+                },
+                []
+            )
+
+            const keenSliderPrevious = document.getElementById('keen-slider-previous')
+            const keenSliderNext = document.getElementById('keen-slider-next')
+
+            keenSliderPrevious.addEventListener('click', () => keenSlider.prev())
+            keenSliderNext.addEventListener('click', () => keenSlider.next())
+        </script>
+
+        <section class="bg-white border">
+            <div class="mx-auto max-w-screen-lg px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+                <div class="max-w-lg mx-auto">
+                    <h2 class="text-center text-xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        Kata pelanggan kami tentang pengalaman mereka!
+                    </h2>
+                </div>
+
+                <div class="mt-8">
+                    <div id="keen-slider" class="keen-slider">
+                        <div class="keen-slider__slide opacity-40 transition-opacity duration-500">
+                            <blockquote class="rounded-lg bg-gray-50 p-6 shadow-xs sm:p-8">
+                                <div class="flex items-center gap-4">
+                                    <img alt=""
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkQY77eP40wItgCJ89uDS1OzviJqyERLJQk_MJpXMj_6bg4UyUWsLWZmH0T7fYQHsFtEs&usqp=CAU"
+                                        class="size-14 rounded-full object-cover" />
+
+                                    <div>
+                                        <div class="flex justify-center gap-0.5 text-yellow-400">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+
+                                        <p class="mt-0.5 text-lg font-medium text-gray-900">John String</p>
+                                    </div>
+                                </div>
+
+                                <p class="mt-4 text-gray-700">
+                                    Proses belanja di Simple Store sangat mudah! Tinggal chat WhatsApp,
+                                    admin cepat respon dan ramah. Barang dikirim dengan aman dan sesuai pesanan.
+                                    Pasti order lagi!
+                                </p>
+                            </blockquote>
+                        </div>
+
+                        <div class="keen-slider__slide opacity-40 transition-opacity duration-500">
+                            <blockquote class="rounded-lg bg-gray-50 p-6 shadow-xs sm:p-8">
+                                <div class="flex items-center gap-4">
+                                    <img alt=""
+                                        src="https://images.unsplash.com/photo-1611403119860-57c4937ef987?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXNpYW4lMjBtZW58ZW58MHx8MHx8fDA%3D"
+                                        class="size-14 rounded-full object-cover" />
+
+                                    <div>
+                                        <div class="flex justify-center gap-0.5 text-yellow-400">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+
+                                        <p class="mt-0.5 text-lg font-medium text-gray-900">Wahyu Starboy</p>
+                                    </div>
+                                </div>
+
+                                <p class="mt-4 text-gray-700">
+                                    Belanja di Simple Store sangat praktis! Cukup hubungi lewat WhatsApp,
+                                    admin fast respon dan bantu proses pesanan sampai selesai. Highly recommended!
+                                </p>
+                            </blockquote>
+                        </div>
+
+                        <div class="keen-slider__slide opacity-40 transition-opacity duration-500">
+                            <blockquote class="rounded-lg bg-gray-50 p-6 shadow-xs sm:p-8">
+                                <div class="flex items-center gap-4">
+                                    <img alt=""
+                                        src="https://media.istockphoto.com/id/1288538088/photo/portrait-young-confident-smart-asian-businessman-look-at-camera-and-smile.jpg?b=1&s=612x612&w=0&k=20&c=r6yIXD9qE6vwqcg3-5iIxL6v3O_lV75oLpDTDQn-o8Y="
+                                        class="size-14 rounded-full object-cover" />
+
+                                    <div>
+                                        <div class="flex justify-center gap-0.5 text-yellow-400">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <p class="mt-0.5 text-lg font-medium text-gray-900">Rahmat Tahalu</p>
+                                    </div>
+                                </div>
+
+                                <p class="mt-4 text-gray-700">
+                                    Awalnya ragu karena pembelian hanya via WhatsApp, tapi ternyata
+                                    pelayanannya sangat profesional! Admin ramah,
+                                    pesanan cepat diproses, dan barang sampai dengan aman.
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex items-center justify-center gap-4">
+                        <button aria-label="Previous slide" id="keen-slider-previous"
+                            class="text-gray-600 transition-colors hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                            </svg>
+                        </button>
+
+                        <p class="w-16 text-center text-sm text-gray-700">
+                            <span id="keen-slider-active"></span>
+                            /
+                            <span id="keen-slider-count"></span>
+                        </p>
+
+                        <button aria-label="Next slide" id="keen-slider-next"
+                            class="text-gray-600 transition-colors hover:text-gray-900">
+                            <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- End Feedback -->
+
+    <!--FOOTER-->
+    <section id="aboutUs">
+        <footer class="bg-gray-100">
+            <div class="mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8">
+                <div class="flex justify-center text-teal-600">
+                    <h2 class="text-black text-3xl font-bold">Akmal Furniture</h2>
+                </div>
+
+                <p class="mx-auto mt-6 max-w-lg text-center leading-relaxed text-gray-500">
+                    Kami menyediakan mebel berkualitas tinggi dengan desain klasik dan elegan. Setiap produk dibuat
+                    dengan material terbaik dan pengerjaan detail untuk memberikan kenyamanan serta keindahan di
+                    setiap
+                    sudut ruangan Anda.
+                </p>
+
+                <ul class="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
+                    <li>
+                        <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Home </a>
+                    </li>
+
+                    <li>
+                        <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Product </a>
+                    </li>
+
+                    <li>
+                        <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Feedback </a>
+                    </li>
+
+                    <li>
+                        <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> About us</a>
+                    </li>
+
+                </ul>
+
+                <ul class="mt-12 flex justify-center gap-6 md:gap-8">
+
+                    <li>
+                        <a href="#" rel="noreferrer" target="_blank"
+                            class="text-gray-700 transition  hover:text-gray-700/75">
+                            <span class="sr-only">Instagram</span>
+                            <svg class="size-6 hover:scale-150 hover:transition-all" fill="currentColor"
+                                viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" rel="noreferrer" target="_blank"
+                            class="text-gray-700 transition  hover:text-gray-700/75">
+                            <span class="sr-only">Facebook</span>
+                            <svg class="size-6 hover:scale-150 hover:transition-all" viewBox="0 0 16 16"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M15 8a7 7 0 00-7-7 7 7 0 00-1.094 13.915v-4.892H5.13V8h1.777V6.458c0-1.754 1.045-2.724 2.644-2.724.766 0 1.567.137 1.567.137v1.723h-.883c-.87 0-1.14.54-1.14 1.093V8h1.941l-.31 2.023H9.094v4.892A7.001 7.001 0 0015 8z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" rel="noreferrer" target="_blank"
+                            class="text-gray-700 transition  hover:text-gray-700/75">
+                            <span class="sr-only">WhatsApp</span>
+                            <svg class="size-6 hover:scale-150 hover:transition-all" fill="currentColor"
+                                viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" inkscape:connector-curvature="0"
+                                    d="M16.6,14c-0.2-0.1-1.5-0.7-1.7-0.8c-0.2-0.1-0.4-0.1-0.6,0.1c-0.2,0.2-0.6,0.8-0.8,1c-0.1,0.2-0.3,0.2-0.5,0.1c-0.7-0.3-1.4-0.7-2-1.2c-0.5-0.5-1-1.1-1.4-1.7c-0.1-0.2,0-0.4,0.1-0.5c0.1-0.1,0.2-0.3,0.4-0.4c0.1-0.1,0.2-0.3,0.2-0.4c0.1-0.1,0.1-0.3,0-0.4c-0.1-0.1-0.6-1.3-0.8-1.8C9.4,7.3,9.2,7.3,9,7.3c-0.1,0-0.3,0-0.5,0C8.3,7.3,8,7.5,7.9,7.6C7.3,8.2,7,8.9,7,9.7c0.1,0.9,0.4,1.8,1,2.6c1.1,1.6,2.5,2.9,4.2,3.7c0.5,0.2,0.9,0.4,1.4,0.5c0.5,0.2,1,0.2,1.6,0.1c0.7-0.1,1.3-0.6,1.7-1.2c0.2-0.4,0.2-0.8,0.1-1.2C17,14.2,16.8,14.1,16.6,14 M19.1,4.9C15.2,1,8.9,1,5,4.9c-3.2,3.2-3.8,8.1-1.6,12L2,22l5.3-1.4c1.5,0.8,3.1,1.2,4.7,1.2h0c5.5,0,9.9-4.4,9.9-9.9C22,9.3,20.9,6.8,19.1,4.9 M16.4,18.9c-1.3,0.8-2.8,1.3-4.4,1.3h0c-1.5,0-2.9-0.4-4.2-1.1l-0.3-0.2l-3.1,0.8l0.8-3l-0.2-0.3C2.6,12.4,3.8,7.4,7.7,4.9S16.6,3.7,19,7.5C21.4,11.4,20.3,16.5,16.4,18.9"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </footer>
+    </section>
+
+    <!--END FOOTER-->
+
+
+
+</body>
+
+</html>
